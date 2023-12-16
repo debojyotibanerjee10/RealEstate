@@ -12,7 +12,7 @@ import { useNavigate } from 'react-router-dom';
 
 export default function CreateListing() {
     const naviagte=useNavigate();
-const [error,setError]=useState(false);
+    const [error,setError]=useState(false);
 const [loading,setLoading]=useState(false);
   const [files, setFiles] = useState([]);
   const {currentUser}=useSelector((state=>state.user))

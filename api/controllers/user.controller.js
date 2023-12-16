@@ -1,7 +1,7 @@
 import bcryptjs from 'bcryptjs';
 import User from '../models/user.model.js';
 import { errorHandler } from '../utils/error.js';
-
+import Listing from "../models/listing.model.js"
 
 export const test = (req, res) => {
     res.json({
@@ -69,4 +69,19 @@ export const test = (req, res) => {
     }catch(err){
       next(err);
     }
+  }
+
+
+  export const getUserListings=async(req,res,next)=>{
+    try{
+      if(req.user.id!==req.params.id){
+        return next(errorHandler(401,"You can only view your own listings"))
+      }
+      const listing=await Listing.find({useRef:req.params.id});
+      res.status(200).json(listing);
+
+    }catch(err){
+      next(err);
+    }
+
   }
