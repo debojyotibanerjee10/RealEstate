@@ -149,7 +149,7 @@ const handleSubmit=async(e)=>{
             return;
         }
         setLoading(false);
-        naviagte(`listing/${data._id}`)
+        naviagte(`/listing/${data._id}`)
 
     }catch(err){
         setError(err.message);
